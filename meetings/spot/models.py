@@ -20,7 +20,7 @@ class Spot(models.Model):
 
 class Event(models.Model):
     creator = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    place = models.ForeignKey(Spot, on_delete=models.CASCADE)
+    place = models.ForeignKey(Spot, on_delete=models.CASCADE, related_name='event')
     scheduled_data_time = models.DateTimeField()
     max_players = models.PositiveIntegerField()
     current_players = models.PositiveIntegerField(default=1)
