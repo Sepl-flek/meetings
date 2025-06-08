@@ -31,6 +31,6 @@ class Event(models.Model):
 
 
 class Participation(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     joined_at = models.DateTimeField(auto_now_add=True)
