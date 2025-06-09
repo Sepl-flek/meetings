@@ -24,7 +24,6 @@ class SingleEventParticipationViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Participation.objects.filter(event_id=self.kwargs.get('event_id')).select_related(
-            'event__place',
-            'event__creator',
             'profile__user'
         )
+

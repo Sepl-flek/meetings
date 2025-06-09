@@ -20,9 +20,9 @@ class EventSerializer(ModelSerializer):
 
 
 class ParticipationSerializer(ModelSerializer):
-    event = EventSerializer()
     profile_name = serializers.CharField(source='profile.user.username')
+    user_id = serializers.IntegerField(source='profile.user.id')
 
     class Meta:
         model = Participation
-        fields = ('event', 'joined_at', 'profile_name')
+        fields = ('joined_at', 'profile_name', 'user_id')
