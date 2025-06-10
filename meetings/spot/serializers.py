@@ -8,7 +8,7 @@ from user.serializers import ProfileSerializer
 class SpotSerializer(ModelSerializer):
     class Meta:
         model = Spot
-        fields = ('name', 'description', 'address', 'sport_types',)
+        fields = ('name', 'description', 'address', 'sport_type',)
 
 
 class EventSerializer(ModelSerializer):

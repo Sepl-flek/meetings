@@ -10,7 +10,7 @@ class Spot(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    sport_types = models.CharField(max_length=30)
+    sport_type = models.CharField(max_length=30)
     verified = models.BooleanField(default=False)
     latitude = models.FloatField()
     longitude = models.FloatField()
