@@ -4,3 +4,4 @@ psycopg2==2.9.10
 celery[redis]==5.5.3
 flower==2.0.1
 django-filter==25.1
+httpx==0.28.1

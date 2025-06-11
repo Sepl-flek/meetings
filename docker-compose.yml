@@ -6,8 +6,10 @@ services:
       - "8000:8000"
     volumes:
       - ./meetings:/meetings
-
+    env_file:
+      - .env
     environment:
+      - YANDEX_API_KEY=${YANDEX_API_KEY}
       - DB_HOST=database
       - DB_NAME=dbname
       - DB_USER=dbuser
@@ -35,6 +37,8 @@ services:
       context: .
     hostname: worker
     entrypoint: celery
+    env_file:
+      - .env
     command: -A celery_app.app worker --loglevel=info
     volumes:
       - ./meetings:/meetings

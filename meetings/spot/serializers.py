@@ -2,13 +2,22 @@ from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from spot.models import Spot, Event, Participation
-from user.serializers import ProfileSerializer
+
 
 
 class SpotSerializer(ModelSerializer):
     class Meta:
         model = Spot
         fields = ('name', 'description', 'address', 'sport_type',)
+
+
+class SpotWithDistanceSerializer(ModelSerializer):
+    distance = serializers.FloatField()
+
+    class Meta:
+        model = Spot
+        fields = ['id', 'name', 'description', 'address', 'sport_type', 'verified',
+                  'latitude', 'longitude', 'distance']
 
 
 class EventSerializer(ModelSerializer):

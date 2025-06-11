@@ -139,3 +139,5 @@ LOGGING = {
 }
 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
+
+YANDEX_API_KEY = os.environ.get('YANDEX_API_KEY')
