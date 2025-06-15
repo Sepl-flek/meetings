@@ -4,7 +4,6 @@ from rest_framework.serializers import ModelSerializer
 from spot.models import Spot, Event, Participation
 
 
-
 class SpotSerializer(ModelSerializer):
     class Meta:
         model = Spot

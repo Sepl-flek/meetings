@@ -1,5 +1,6 @@
 from django.db.models import F
 from django.db.models.functions import ACos, Radians, Cos, Sin
+from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.response import Response
@@ -77,3 +78,19 @@ class SpotNearViewSet(ModelViewSet):
         context['user_lat'] = getattr(self, 'user_lat', None)
         context['user_lon'] = getattr(self, 'user_lon', None)
         return context
+
+
+class VerifiedSpotViewSet(ModelViewSet):
+    serializer_class = SpotSerializer
+    queryset = Spot.objects.filter(verified=True)
+
+
+class ActualEventViewSet(ModelViewSet):
+    serializer_class = EventSerializer
+
+    def get_queryset(self):
+        now = timezone.now()
+        return Event.objects.filter(
+            scheduled_data_time__gte=now,
+            is_active=True
+        ).prefetch_related('place')
