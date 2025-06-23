@@ -34,12 +34,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'channels',
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
 
     'user',
-    'spot'
+    'spot',
+    'chat'
 
 ]
 
@@ -71,6 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'meetings.wsgi.application'
+ASGI_APPLICATION = "meetings.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -141,3 +144,13 @@ LOGGING = {
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 
 YANDEX_API_KEY = os.environ.get('YANDEX_API_KEY')
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis", 6379)],
+        },
+    },
+}

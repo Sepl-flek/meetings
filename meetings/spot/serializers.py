@@ -7,7 +7,7 @@ from spot.models import Spot, Event, Participation
 class SpotSerializer(ModelSerializer):
     class Meta:
         model = Spot
-        fields = ('name', 'description', 'address', 'sport_type',)
+        fields = ('name', 'description', 'address', 'sport_type', 'verified')
 
 
 class SpotWithDistanceSerializer(ModelSerializer):

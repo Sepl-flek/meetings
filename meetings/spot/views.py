@@ -2,8 +2,6 @@ from django.db.models import F
 from django.db.models.functions import ACos, Radians, Cos, Sin
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import status
-from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from spot.models import Spot, Event, Participation
@@ -17,7 +15,7 @@ class SpotViewSet(ModelViewSet):
     queryset = Spot.objects.all()
     serializer_class = SpotSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['sport_type']
+    filterset_fields = ['sport_type', 'verified']
 
 
 class EventViewSet(ModelViewSet):
