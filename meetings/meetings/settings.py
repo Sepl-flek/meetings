@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
+    'social_django',
 
     'user',
     'spot',
@@ -88,6 +89,15 @@ DATABASES = {
 
     }
 }
+
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -144,7 +154,6 @@ LOGGING = {
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 
 YANDEX_API_KEY = os.environ.get('YANDEX_API_KEY')
-
 
 CHANNEL_LAYERS = {
     "default": {
